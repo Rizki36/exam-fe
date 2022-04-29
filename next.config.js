@@ -8,7 +8,7 @@ module.exports = withBundleAnalyzer({
     dirs: ['.'],
   },
   images: {
-    domains: ['cdn.sejutacita.id'],
+    domains: ['cdn.sejutacita.id', 'api.lorem.space'],
   },
   poweredByHeader: false,
   trailingSlash: true,

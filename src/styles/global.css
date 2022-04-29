@@ -2,6 +2,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
 
 @tailwind base;
+
+html {
+  scrollbar-color: #00000080 transparent;
+  scrollbar-width: 10px;
+}
+
+html[class*='dark'] {
+  scrollbar-color: #ffffffb3 transparent;
+  scrollbar-width: 10px;
+}
+
+body {
+  margin-right: 0px !important;
+  padding-right: 0px !important;
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-black/50 dark:bg-gray-200;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-black/60 dark:hover:bg-white/80;
+}
 @tailwind components;
 @tailwind utilities;
 
@@ -11,6 +43,9 @@
   }
 }
 
+html{
+  @apply !bg-base-content;
+}
 a {
   @apply text-blue-700;
 }

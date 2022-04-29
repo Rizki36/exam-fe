@@ -1,14 +1,14 @@
-import * as React from 'react';
 import { FC } from 'react';
 
-import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 const BaseTemplate: FC = ({ children }) => {
   return (
-    <>
-      <Navbar className="fixed z-50" />
-      <div className="flex flex-col">{children}</div>
-    </>
+    <div className="flex h-screen">
+      <Sidebar />
+      <div className="overflow-y-auto w-full h-screen">{children}</div>
+    </div>
   );
 };
+
 export default BaseTemplate;

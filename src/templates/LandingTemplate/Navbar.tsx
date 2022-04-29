@@ -4,9 +4,7 @@ import Container from '@/components/Container';
 
 const Navbar: FC<{ className?: string }> = ({ className }) => {
   return (
-    <Container
-      className={`bg-opacity-20 backdrop-blur bg-base-100 w-full ${className}`}
-    >
+    <Container className={`backdrop-blur bg-base-100 w-full ${className}`}>
       <div className="navbar">
         <div className="flex-1">
           <a className="text-4xl normal-case btn btn-ghost">Booku</a>

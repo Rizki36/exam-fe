@@ -14,6 +14,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.0",
     "daisyui": "^2.14.2",
     "hamburger-react": "^2.5.0",
     "next": "^12.1.0",
