@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { FC } from 'react';
 
-const ClientTemplate: FC = ({ children }) => {
+import Navbar from './Navbar';
+
+const BaseTemplate: FC = ({ children }) => {
   return (
     <>
-      <div className="flex flex-col min-h-screen">{children}</div>
+      <Navbar className="fixed z-50" />
+      <div className="flex flex-col">{children}</div>
     </>
   );
 };
-export default ClientTemplate;
+export default BaseTemplate;

@@ -7,6 +7,9 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['.'],
   },
+  images: {
+    domains: ['cdn.sejutacita.id'],
+  },
   poweredByHeader: false,
   trailingSlash: true,
   basePath: '',
