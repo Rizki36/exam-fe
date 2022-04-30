@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import Link from 'next/link';
+
 import ImageItem from './ImageItem';
 
 const DetailItem: FC<{ className?: string }> = ({ className }) => {
@@ -51,9 +53,9 @@ const DetailItem: FC<{ className?: string }> = ({ className }) => {
         </p>
       </div>
 
-      <button className="mb-10 w-full rounded-full btn btn-primary">
-        Read
-      </button>
+      <Link href={'/books/1'} passHref>
+        <a className="mb-10 w-full rounded-full btn btn-primary">Read</a>
+      </Link>
     </div>
   );
 };
