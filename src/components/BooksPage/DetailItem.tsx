@@ -13,6 +13,10 @@ const DetailItem: FC<{ className?: string }> = ({ className }) => {
         <ImageItem src="https://cdn.sejutacita.id/6138d21e3a09ee0013ee730f/Booku/c55ef13f-eb0e-40de-a04c-e46df5940682.png" />
       </div>
       <div className="flex-1">
+        <div className="flex justify-center mt-3">
+          <small>📃 8 Chapters</small> &nbsp; &nbsp; &nbsp;{' '}
+          <small>⏰ 16 Min</small>
+        </div>
         <h5 className="mt-4 text-lg text-center">The Intelligent Investor</h5>
         <small className="block mb-5 text-center text-base-content/70">
           Benjamin Graham
