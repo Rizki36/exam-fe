@@ -11,7 +11,7 @@ const Books: Page = () => {
   const [activeTab, setActiveTab] = useState<TabEnum>('books');
   return (
     <div className="overflow-y-hidden !pr-0">
-      <div className="flex h-screen">
+      <div className="flex lg:h-screen">
         <Container className="overflow-y-scroll py-5 w-full">
           <div className="flex flex-col justify-between mb-10 lg:flex-row">
             <TabItem
