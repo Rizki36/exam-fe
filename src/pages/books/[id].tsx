@@ -1,21 +1,28 @@
-import { ArrowLeftIcon } from '@heroicons/react/outline';
+import { useState } from 'react';
+
+import {
+  ChevronLeftIcon,
+  ShareIcon,
+  StarIcon as StarIconOutline,
+} from '@heroicons/react/outline';
+import { StarIcon as StarIconSolid } from '@heroicons/react/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const BookDetailsPage = () => {
+  const [isFavorite, setFavorite] = useState(false);
+
   return (
-    <div className="grid grid-cols-4 py-6 px-10">
+    <div className="grid grid-cols-4 py-6 px-8  lg:gap-y-0 ">
       <div className="flex col-span-4 items-center mb-10 text-base-100">
         <Link href={'/books'} passHref>
-          <a className="flex items-center">
-            <button className="mr-3 btn btn-sm btn-square btn-ghost">
-              <ArrowLeftIcon className="w-5 h-5" />
-            </button>
-            <span className="text-lg text-base-100">Back</span>
+          <a className="mr-3 btn btn-sm btn-ghost">
+            <ChevronLeftIcon className="w-4 h-4" />
+            <span className="ml-3 text-sm text-base-100">Back</span>
           </a>
         </Link>
       </div>
-      <div>
+      <div className="col-span-4 lg:col-span-1">
         <div className="aspect-[2/3] overflow-hidden relative w-full rounded-lg">
           <Image
             className="rounded-md"
@@ -27,8 +34,8 @@ const BookDetailsPage = () => {
             alt="Booku"
           />
         </div>
-        <div className="flex justify-center mt-3 text-base-100">
-          <small>📃 8 Chapters</small> &nbsp; &nbsp; &nbsp;{' '}
+        <div className="flex gap-x-4 justify-center mt-3 text-base-100">
+          <small>📃 8 Chapters</small>
           <small>⏰ 16 Min</small>
         </div>
 
@@ -37,10 +44,35 @@ const BookDetailsPage = () => {
           <button className="flex-1 btn">🎧 Read</button>
         </div>
       </div>
-      <div className="col-span-3 p-8 py-3 text-base-100">
-        <h1 className="text-xl font-bold">The Intelligent Investor</h1>
-        <h4 className="text-lg">Benjamin Graham</h4>
-        <div className="mt-7">
+
+      <div className="col-span-4 p-1 py-3 mt-10 lg:col-span-3 lg:px-8 lg:mt-0 text-base-100">
+        <div>
+          <h1 className="text-xl font-bold text-center lg:text-left">
+            The Intelligent Investor
+          </h1>
+          <h4 className="text-lg text-center lg:text-left">Benjamin Graham</h4>
+        </div>
+
+        <div className="my-5">
+          <button className="btn btn-ghost">
+            <ShareIcon className="w-6 h-6" />
+            &nbsp; Share
+          </button>
+
+          <button
+            className="btn btn-ghost"
+            onClick={() => setFavorite(!isFavorite)}
+          >
+            {isFavorite ? (
+              <StarIconSolid className="w-6 h-6" />
+            ) : (
+              <StarIconOutline className="w-6 h-6" />
+            )}
+            &nbsp; Favorite
+          </button>
+        </div>
+
+        <div>
           <h1 className="mb-1 text-xl font-medium">What&apos;s it about ?</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
