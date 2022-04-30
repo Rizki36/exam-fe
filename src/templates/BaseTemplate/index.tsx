@@ -5,7 +5,7 @@ import Sidebar from './Sidebar';
 const BaseTemplate: FC = ({ children }) => {
   return (
     <div className="flex h-screen">
-      <Sidebar />
+      <Sidebar className="hidden lg:flex" />
       <div className="overflow-y-auto w-full h-screen">{children}</div>
     </div>
   );
