@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import DetailItem from '@/components/BooksPage/DetailItem';
 import ImageItem from '@/components/BooksPage/ImageItem';
+import PaginationItem from '@/components/BooksPage/PaginationItem';
 import SearchItem from '@/components/BooksPage/SearchItem';
 import TabItem, { TabEnum } from '@/components/BooksPage/TabItem';
 import Container from '@/components/Container';
@@ -9,6 +10,8 @@ import { Page } from '@types';
 
 const Books: Page = () => {
   const [activeTab, setActiveTab] = useState<TabEnum>('books');
+  const [page, setPage] = useState(1);
+
   return (
     <div className="overflow-y-hidden !pr-0">
       <div className="flex lg:h-screen">
@@ -34,6 +37,14 @@ const Books: Page = () => {
                 <p className="text-sm opacity-80">Benjamin Graham</p>
               </div>
             ))}
+          </div>
+
+          <div className="flex justify-center mt-16 w-full">
+            <PaginationItem
+              page={page}
+              back={() => setPage(page - 1)}
+              next={() => setPage(page + 1)}
+            />
           </div>
         </Container>
 
