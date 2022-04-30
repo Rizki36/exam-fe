@@ -4,7 +4,7 @@ const ButtonViewMore = () => {
   return (
     <Link href={'/books'} passHref>
       <button className="self-center mt-8 w-fit btn btn-outline">
-        View More &nbsp;
+        View More Book &nbsp;
         <svg
           className="w-6 h-6"
           fill="none"

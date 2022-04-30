@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import Link from 'next/link';
+
 import Container from '@/components/Container';
 
 const Navbar: FC<{ className?: string }> = ({ className }) => {
@@ -28,27 +30,13 @@ const Navbar: FC<{ className?: string }> = ({ className }) => {
               </svg>
             </div>
           </label>
-          <div className="dropdown dropdown-end">
+          <Link href={'/profile'} passHref>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img src="https://api.lorem.space/image/face?hash=33791" />
               </div>
             </label>
-            <ul
-              tabIndex={0}
-              className="p-2 mt-3 w-52 shadow menu menu-compact dropdown-content bg-base-100 rounded-box"
-            >
-              <li>
-                <a className="justify-between">Profile</a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
+          </Link>
         </div>
       </div>
     </Container>

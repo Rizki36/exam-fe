@@ -9,7 +9,7 @@ import SearchItem from './SearchItem';
 
 const TrandingSection = () => {
   return (
-    <Container className="backdrop-blur snap-y snap-mandatory bg-base-100">
+    <Container className="h-screen backdrop-blur snap-y snap-mandatory bg-base-100">
       <div className="grid relative grid-cols-1 items-center py-20 min-h-fit snap-center lg:grid-cols-3 lg:p-0 lg:h-screen">
         <div className="flex flex-col order-2 justify-center items-center mb-24 w-full h-full lg:order-1 lg:h-full">
           <h1 className="relative text-4xl font-bold xl:text-6xl">
