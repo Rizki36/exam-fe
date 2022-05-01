@@ -2,9 +2,14 @@ import { FC } from 'react';
 
 import Image from 'next/image';
 
-const ImageItem: FC<{ src: string }> = ({ src }) => {
+const ImageItem: FC<{ src: string; className?: string }> = ({
+  src,
+  className,
+}) => {
   return (
-    <div className="aspect-[2/3] overflow-hidden relative w-full rounded-lg">
+    <div
+      className={`aspect-[2/3] overflow-hidden relative rounded-lg ${className}`}
+    >
       <Image
         className="rounded-md"
         layout="fill"

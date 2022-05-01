@@ -9,17 +9,19 @@ const DetailItem: FC<{
   book: number | null;
   setBook: Dispatch<SetStateAction<number | null>>;
 }> = ({ className, book, setBook }) => {
-  console.log(book);
   return (
     <div
-      className={`flex-col p-3 px-6 w-96 bg-gradient-to-b bg-base-100 from-base-100 to-base-300 ${
-        !book ? 'hidden' : 'flex absolute right-0 !w-full left-0'
-      } lg:flex ${className} `}
+      className={`flex flex-col p-3 px-6 lg:w-96 bg-gradient-to-b bg-base-100 from-base-100 to-base-300 ${
+        !book ? 'hidden' : 'absolute lg:relative right-0 w-full left-0'
+      }${className} `}
     >
       <h3 className="mt-4 text-xl text-center">About The Book</h3>
       <div className="my-4 divider">&apos;&apos;</div>
-      <div className="relative mx-9">
-        <ImageItem src="https://cdn.sejutacita.id/6138d21e3a09ee0013ee730f/Booku/c55ef13f-eb0e-40de-a04c-e46df5940682.png" />
+      <div className="flex relative justify-center mx-9">
+        <ImageItem
+          className="w-full sm:w-48 lg:w-full"
+          src="https://cdn.sejutacita.id/6138d21e3a09ee0013ee730f/Booku/c55ef13f-eb0e-40de-a04c-e46df5940682.png"
+        />
       </div>
       <div className="flex-1">
         <div className="flex justify-center mt-3">
@@ -60,13 +62,15 @@ const DetailItem: FC<{
         </p>
       </div>
 
-      <div className="mb-10">
+      <div className="flex flex-col gap-x-4 justify-center mb-10 md:flex-row">
         <Link href={'/books/1'} passHref>
-          <a className="mt-3 w-full rounded-full btn btn-primary">Read</a>
+          <a className="mt-3 w-full rounded-full md:w-60 lg:w-full btn btn-primary">
+            Read
+          </a>
         </Link>
         <button
           onClick={() => setBook(null)}
-          className="mt-3 w-full rounded-full lg:hidden btn btn-primary btn-outline"
+          className="mt-3 w-full rounded-full md:w-60 lg:hidden btn btn-primary btn-outline"
         >
           Close
         </button>
