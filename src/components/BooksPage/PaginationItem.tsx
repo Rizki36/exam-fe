@@ -1,22 +1,21 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
-const PaginationItem: FC<{
-  page: number;
-  back: () => any;
-  next: () => any;
-}> = ({ back, next, page }) => {
+const PaginationItem: FC = () => {
+  const [page, setPage] = useState(1);
+
   return (
     <div className="btn-group">
       <button
         onClick={() => {
-          if (page > 1) back();
+          // prevent back
+          if (page > 1) setPage(page - 1);
         }}
         className="btn"
       >
         «
       </button>
       <button className="btn">Page {page}</button>
-      <button onClick={next} className="btn">
+      <button onClick={() => setPage(page + 1)} className="btn">
         »
       </button>
     </div>

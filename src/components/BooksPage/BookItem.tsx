@@ -6,7 +6,7 @@ const BookItem = () => {
   const [book, setBook] = useState<number | null>(null);
 
   return (
-    <div className="grid flex-1 grid-cols-2 gap-x-3 gap-y-10 lg:grid-cols-4 lg:gap-x-8">
+    <>
       {[...Array(10)].map((_, i) => (
         <label key={i} className="relative select-none text-base-100">
           <input
@@ -14,7 +14,10 @@ const BookItem = () => {
             name="book"
             className="peer hidden"
             checked={i === book}
-            onChange={() => setBook(i)}
+            onClick={() => {
+              if (i === book) setBook(null);
+              else setBook(i);
+            }}
           />
           <div className="py-3 px-4 rounded-lg transition-all peer-checked:bg-base-100/90 peer-checked:text-base-content">
             <ImageItem
@@ -27,7 +30,7 @@ const BookItem = () => {
           </div>
         </label>
       ))}
-    </div>
+    </>
   );
 };
 

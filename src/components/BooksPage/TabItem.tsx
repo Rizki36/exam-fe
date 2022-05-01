@@ -1,14 +1,14 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { FC, useState } from 'react';
 
 export type TabEnum = 'books' | 'favorite';
 
 type TabItemType = {
   className?: string;
-  activeTab: TabEnum;
-  setActiveTab: Dispatch<SetStateAction<TabEnum>>;
 };
 
-const TabItem: FC<TabItemType> = ({ className, activeTab, setActiveTab }) => {
+const TabItem: FC<TabItemType> = ({ className }) => {
+  const [activeTab, setActiveTab] = useState<TabEnum>('books');
+
   return (
     <div className={`tabs ${className}`}>
       <a
