@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useAppSelector } from '@/configs/redux/hooks';
 
 import Container from '../Container';
 import BookItem from './BookItem';
@@ -10,8 +10,7 @@ import SearchItem from './SearchItem';
 import TabItem from './TabItem';
 
 const BooksPage = () => {
-  const [book, setBook] = useState<number | null>(null);
-  const [categoryId, setCategoryId] = useState<number | null>(null);
+  const { selectedCategory } = useAppSelector((state) => state.book);
 
   return (
     <div className="overflow-hidden !pr-0">
@@ -22,12 +21,12 @@ const BooksPage = () => {
             <SearchItem className={'mt-8 w-full lg:w-fit'} />
           </div>
 
-          <CategoryItem setCategoryId={setCategoryId} categoryId={categoryId} />
+          <CategoryItem />
 
-          {categoryId ? (
+          {selectedCategory ? (
             <>
               <div className="grid flex-1 grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-3 lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4 xl:gap-x-8">
-                <BookItem book={book} setBook={setBook} />
+                <BookItem />
               </div>
               <div className="flex justify-center mt-16 w-full">
                 <PaginationItem />
@@ -38,7 +37,7 @@ const BooksPage = () => {
           )}
         </Container>
 
-        <DetailItem book={book} setBook={setBook} />
+        <DetailItem />
       </div>
     </div>
   );

@@ -1,9 +1,12 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { FC } from 'react';
 
-const CategoryItem: FC<{
-  categoryId: number | null;
-  setCategoryId: Dispatch<SetStateAction<number | null>>;
-}> = ({ categoryId, setCategoryId }) => {
+import { setSelectedCategory } from '@/configs/redux/bookSlice';
+import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
+
+const CategoryItem: FC = () => {
+  const { selectedCategory } = useAppSelector((state) => state.book);
+  const dispatch = useAppDispatch();
+
   return (
     <div className="text-base-100">
       <div className="mb-3 text-lg">Category</div>
@@ -17,11 +20,15 @@ const CategoryItem: FC<{
               type="radio"
               name="category"
               className="peer hidden"
-              checked={categoryId === i + 1}
-              onChange={() => setCategoryId(i + 1)}
+              checked={selectedCategory?.id === i + 1}
+              onChange={() =>
+                dispatch(
+                  setSelectedCategory({ id: i + 1, name: `Music ${i + 1}` })
+                )
+              }
             />
             <div className="py-2 px-3 rounded-full border peer-checked:bg-base-100 peer-checked:text-base-content">
-              🎧 Music
+              🎧 Music {i + 1}
             </div>
           </label>
         ))}
