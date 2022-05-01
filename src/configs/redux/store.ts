@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 import userReducer from './bookSlice';
 
 const rootReducer = combineReducers({
-  user: userReducer,
+  book: userReducer,
 });
 
 const store = configureStore({
