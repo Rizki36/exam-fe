@@ -5,11 +5,13 @@ import { CategoryType, BookType } from '@types';
 export interface BookState {
   selectedCategory: CategoryType | null;
   selectedBook: BookType | null;
+  favorite: BookType[];
 }
 
 const initialState: BookState = {
   selectedCategory: null,
   selectedBook: null,
+  favorite: [],
 };
 
 export const bookSlice = createSlice({
@@ -22,8 +24,18 @@ export const bookSlice = createSlice({
     setSelectedCategory(state, action: PayloadAction<CategoryType | null>) {
       state.selectedCategory = action.payload;
     },
+    toggleFavoriteBook(state, action: PayloadAction<BookType>) {
+      const curIndex = state.favorite.findIndex(
+        (book) => book.id === action.payload.id
+      );
+
+      if (curIndex >= 0) state.favorite.splice(curIndex, 1);
+      else state.favorite.push(action.payload);
+    },
   },
 });
 
-export const { setSelectedBook, setSelectedCategory } = bookSlice.actions;
+export const { setSelectedBook, setSelectedCategory, toggleFavoriteBook } =
+  bookSlice.actions;
+
 export default bookSlice.reducer;
