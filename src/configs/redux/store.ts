@@ -10,31 +10,31 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 
-import userReducer from './bookSlice';
+import bookReducer from './bookSlice';
 
-// const createNoopStorage = () => {
-//   return {
-//     getItem(_key: any) {
-//       return Promise.resolve(null);
-//     },
-//     setItem(_key: any, value: any) {
-//       return Promise.resolve(value);
-//     },
-//     removeItem(_key: any) {
-//       return Promise.resolve();
-//     },
-//   };
-// };
+const createNoopStorage = () => {
+  return {
+    getItem(_key: any) {
+      return Promise.resolve(null);
+    },
+    setItem(_key: any, value: any) {
+      return Promise.resolve(value);
+    },
+    removeItem(_key: any) {
+      return Promise.resolve();
+    },
+  };
+};
 
-// const storage =
-//   typeof window !== 'undefined'
-//     ? createWebStorage('local')
-//     : createNoopStorage();
+const storage =
+  typeof window !== 'undefined'
+    ? createWebStorage('local')
+    : createNoopStorage();
 
 const rootReducer = combineReducers({
-  book: userReducer,
+  book: bookReducer,
 });
 
 const persistedReducer = persistReducer(
