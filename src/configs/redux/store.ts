@@ -12,7 +12,7 @@ import {
 } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 
-import userReducer from './bookSlice';
+import bookReducer from './bookSlice';
 
 const createNoopStorage = () => {
   return {
@@ -34,12 +34,12 @@ const storage =
     : createNoopStorage();
 
 const rootReducer = combineReducers({
-  book: userReducer,
+  book: bookReducer,
 });
 
 const persistedReducer = persistReducer(
   {
-    key: 'root',
+    key: 'booku',
     storage,
     whitelist: ['book'],
   },

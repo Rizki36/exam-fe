@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { setSelectedBook } from '@/configs/redux/bookSlice';
 import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
 
+import FavoriteItem from './FavoriteItem';
 import ImageItem from './ImageItem';
 
 const DetailItem: FC<{
@@ -22,7 +23,15 @@ const DetailItem: FC<{
       }${className} `}
     >
       <h3 className="mt-4 text-xl text-center">About The Book</h3>
-      <div className="my-4 divider">&apos;&apos;</div>
+
+      <div className="mt-4 divider">&apos;&apos;</div>
+
+      <div className="mb-4">
+        <h5 className="text-lg text-center">{selectedBook?.title}</h5>
+        <small className="block text-center text-base-content/70">
+          {selectedBook?.authors?.map((author) => author).join(', ')}
+        </small>
+      </div>
       <div className="flex relative justify-center mx-9">
         <ImageItem
           className="w-full sm:w-48 lg:w-full"
@@ -36,10 +45,8 @@ const DetailItem: FC<{
             ⏰{Math.round((selectedBook?.audio_length ?? 0) / 60)} Min
           </small>
         </div>
-        <h5 className="mt-4 text-lg text-center">{selectedBook?.title}</h5>
-        <small className="block mb-5 text-center text-base-content/70">
-          {selectedBook?.authors?.map((author) => author).join(', ')}
-        </small>
+        <FavoriteItem className="my-3 text-base-content" />
+
         <p className="text-sm line-clamp-3 md:line-clamp-5 text-base-content/60">
           {selectedBook?.description}
         </p>

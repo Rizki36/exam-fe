@@ -1,4 +1,4 @@
-const EmptyStateItem = () => {
+const NoCategorySelectedItem = () => {
   return (
     <div className="flex flex-col justify-center items-center h-96 text-base-100">
       <div className="mb-1 text-5xl">😉</div>
@@ -8,4 +8,4 @@ const EmptyStateItem = () => {
   );
 };
 
-export default EmptyStateItem;
+export default NoCategorySelectedItem;

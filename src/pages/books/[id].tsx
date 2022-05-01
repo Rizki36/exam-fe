@@ -1,20 +1,12 @@
-import { useState } from 'react';
-
-import {
-  ChevronLeftIcon,
-  ShareIcon,
-  StarIcon as StarIconOutline,
-} from '@heroicons/react/outline';
-import { StarIcon as StarIconSolid } from '@heroicons/react/solid';
+import { ChevronLeftIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import FavoriteItem from '@/components/BooksPage/FavoriteItem';
 import { useAppSelector } from '@/configs/redux/hooks';
 
 const BookDetailsPage = () => {
   const { selectedBook } = useAppSelector((state) => state.book);
-
-  const [isFavorite, setFavorite] = useState(false);
 
   return (
     <div className="grid grid-cols-4 py-6 px-8  lg:gap-y-0 ">
@@ -43,74 +35,25 @@ const BookDetailsPage = () => {
           </small>
         </div>
 
-        <div className="flex gap-x-3 justify-center px-4 mt-10">
+        <FavoriteItem />
+
+        <div className="flex gap-x-3 justify-center px-4 mt-5">
           <button className="flex-1 btn">🎧 Listen</button>
           <button className="flex-1 btn">📖 Read</button>
         </div>
       </div>
 
       <div className="col-span-4 p-1 py-3 mt-10 lg:col-span-3 lg:px-8 lg:mt-0 text-base-100">
-        <div>
-          <h1 className="text-xl font-bold text-center lg:text-left">
-            {selectedBook?.title}
-          </h1>
-          <h4 className="text-lg text-center lg:text-left">
-            {selectedBook?.description}
-          </h4>
-        </div>
+        <h1 className="mb-8 text-xl font-bold text-center lg:text-left">
+          {selectedBook?.title}
+        </h1>
 
-        <div className="my-5">
-          <button className="btn btn-ghost">
-            <ShareIcon className="w-6 h-6" />
-            &nbsp; Share
-          </button>
-
-          <button
-            className="btn btn-ghost"
-            onClick={() => setFavorite(!isFavorite)}
-          >
-            {isFavorite ? (
-              <StarIconSolid className="w-6 h-6" />
-            ) : (
-              <StarIconOutline className="w-6 h-6" />
-            )}
-            &nbsp; Favorite
-          </button>
-        </div>
-
-        <div>
+        <section>
           <h1 className="mb-1 text-xl font-medium">What&apos;s it about ?</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-            mollitia, Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Repellendus voluptatum vero explicabo ad dignissimos, corporis quos
-            aperiam dolorum quae eius fugiat id soluta, libero eum tempore
-            officiis unde accusantium quibusdam? Molestias est odit omnis! Esse
-            maxime ipsam, placeat eius vel accusantium harum? Quibusdam, facere
-            quod provident tenetur sapiente, quae sit expedita dolorem quas
-            corrupti aspernatur atque praesentium similique dolores. Molestiae
-            voluptatibus quis consequuntur repellendus nemo deleniti voluptate
-            delectus. Veniam exercitationem sunt commodi, possimus non labore,
-            molestias dicta ut velit dignissimos voluptas deleniti quos
-            perferendis aliquam laudantium. Provident delectus voluptatem ad
-            perspiciatis consequatur dolores tempora sunt incidunt iusto quod
-            pariatur commodi deleniti fugiat, totam repellendus dolorum sint
-            voluptatum ex porro sequi aperiam quam veritatis reprehenderit!
-            Dolorum ea doloremque nihil itaque asperiores consequatur
-            voluptatibus saepe, repudiandae sed quidem blanditiis inventore
-            ullam facilis veritatis, dolore in unde fugit, praesentium labore
-            esse? Fuga quas aut dicta consequatur beatae quasi labore ratione
-            eius quod porro? Possimus doloribus consequuntur amet temporibus
-            unde, accusantium quidem earum repellat magnam, autem, reprehenderit
-            fuga maxime? Corrupti, aspernatur mollitia? Error praesentium
-            officiis aliquam officia nam accusantium, dicta dolore nulla
-            cupiditate obcaecati, deleniti illum saepe itaque quisquam quaerat
-            delectus maiores facilis! Praesentium beatae earum ullam cumque
-            quaerat mollitia commodi! Nisi, accusantium facere.
-          </p>
-        </div>
+          <p>{selectedBook?.description}</p>
+        </section>
 
-        <div className="my-8">
+        <section className="my-8">
           <h1 className="mb-1 text-xl font-medium">What&apos;s inside ?</h1>
 
           {selectedBook?.sections?.map((section) => (
@@ -127,7 +70,7 @@ const BookDetailsPage = () => {
               </div>
             </div>
           ))}
-        </div>
+        </section>
       </div>
     </div>
   );
