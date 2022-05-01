@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 import Container from '@/components/Container';
@@ -32,8 +33,13 @@ const Navbar: FC<{ className?: string }> = ({ className }) => {
           </label>
           <Link href={'/profile'} passHref>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://api.lorem.space/image/face?hash=33791" />
+              <div className="relative w-10 rounded-full">
+                <Image
+                  src={'/me.png'}
+                  alt="me"
+                  layout="fill"
+                  objectFit="cover"
+                />
               </div>
             </label>
           </Link>

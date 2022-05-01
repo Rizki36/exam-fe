@@ -17,7 +17,7 @@ const Person: FC<{ className?: string; showImg?: boolean }> = ({
           {showImg && (
             <div className="relative w-14 h-14 rounded-full bg-base-content">
               <Image
-                src={'https://api.lorem.space/image/face?hash=33791'}
+                src={'/me.png'}
                 alt="Avatar Tailwind CSS Component"
                 objectFit="cover"
                 layout="fill"
@@ -26,7 +26,9 @@ const Person: FC<{ className?: string; showImg?: boolean }> = ({
           )}
         </div>
         <div>
-          <div className="text-lg font-extrabold line-clamp-1">Jhone Doe</div>
+          <div className="ml-1 text-lg font-extrabold line-clamp-1">
+            Rizki Fitra
+          </div>
           <small className="text-base-content/80">View Profile</small>
         </div>
       </button>
