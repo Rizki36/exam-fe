@@ -9,16 +9,20 @@ const BookItem: FC<{
   return (
     <>
       {[...Array(10)].map((_, i) => (
-        <label key={i} className="relative select-none text-base-100">
+        <label
+          key={i + 1}
+          className="relative cursor-pointer select-none text-base-100"
+        >
           <input
             type="radio"
             name="book"
             className="peer hidden"
-            checked={i === book}
+            checked={i + 1 === book}
             onClick={() => {
-              if (i === book) setBook(null);
-              else setBook(i);
+              if (i + 1 === book) setBook(null);
+              else setBook(i + 1);
             }}
+            onChange={() => {}}
           />
           <div className="py-3 px-4 rounded-lg transition-all peer-checked:bg-base-100/90 peer-checked:text-base-content">
             <ImageItem

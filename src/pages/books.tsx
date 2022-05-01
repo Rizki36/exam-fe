@@ -15,9 +15,9 @@ const Books: Page = () => {
   const [categoryId, setCategoryId] = useState<number | null>(null);
 
   return (
-    <div className="overflow-y-hidden !pr-0">
+    <div className="overflow-hidden !pr-0">
       <div className="flex lg:h-screen">
-        <Container className="overflow-y-scroll py-5 w-full">
+        <Container className="overflow-x-hidden overflow-y-scroll py-5 w-full">
           <div className="flex flex-col justify-between mb-10 lg:flex-row">
             <TabItem className={'w-full'} />
             <SearchItem className={'mt-8 w-full lg:w-fit'} />

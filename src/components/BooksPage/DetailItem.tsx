@@ -11,8 +11,10 @@ const DetailItem: FC<{
 }> = ({ className, book, setBook }) => {
   return (
     <div
-      className={`flex flex-col p-3 px-6 lg:w-96 bg-gradient-to-b bg-base-100 from-base-100 to-base-300 ${
-        !book ? 'hidden' : 'absolute lg:relative right-0 w-full left-0'
+      className={`flex  flex-col p-3 px-6 lg:w-96 bg-gradient-to-b bg-base-100 from-base-100 to-base-300 ${
+        !book
+          ? 'hidden lg:translate-x-full'
+          : 'absolute lg:relative right-0 w-full left-0'
       }${className} `}
     >
       <h3 className="mt-4 text-xl text-center">About The Book</h3>
