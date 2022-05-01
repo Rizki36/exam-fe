@@ -14,9 +14,9 @@ export type MyAppProps = AppProps & {
 export type BookType = {
   id: number;
   title: string;
-  categoryId: number;
+  category_id: number;
   authors: string[];
-  coverUrl: string;
+  cover_url: string;
   description: string;
   sections: { title: string; content: string }[];
   audio_length: number;

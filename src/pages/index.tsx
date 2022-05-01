@@ -1,6 +1,6 @@
 import LandingPage from '@/components/LandingPage';
 import LandingTemplate from '@/templates/LandingTemplate';
-import { Page } from '@types';
+import { Page } from '@/types';
 
 const Landing: Page = () => {
   return (
