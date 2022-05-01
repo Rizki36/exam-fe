@@ -12,7 +12,8 @@
                 "singleQuote": true,
                 "endOfLine": "auto"
             }
-        ]
+        ],
+        "no-param-reassign": "off"
     },
     "overrides": [
         // Configuration for TypeScript files
