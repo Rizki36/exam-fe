@@ -1,11 +1,18 @@
-import * as React from 'react';
 import { FC } from 'react';
 
-const ClientTemplate: FC = ({ children }) => {
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+
+const BaseTemplate: FC = ({ children }) => {
   return (
-    <>
-      <div className="flex flex-col min-h-screen">{children}</div>
-    </>
+    <div className="flex flex-col h-screen lg:flex-row">
+      <Sidebar className="hidden lg:flex" />
+      <Navbar className="lg:hidden" />
+      <div className="overflow-x-hidden overflow-y-auto w-full lg:h-screen">
+        {children}
+      </div>
+    </div>
   );
 };
-export default ClientTemplate;
+
+export default BaseTemplate;

@@ -1,6 +1,6 @@
 export const AppConfig = {
-  site_name: 'Sejuta Cita',
-  title: 'Sejuta Cita',
+  site_name: 'Booku Sejuta Cita',
+  title: 'Booku Sejuta Cita',
   description: '',
   locale: 'en',
 };
