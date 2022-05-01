@@ -24,7 +24,7 @@ const BookDetailsPage = () => {
             className="rounded-md"
             layout="fill"
             objectFit="contain"
-            src={selectedBook?.coverUrl ?? '/'}
+            src={selectedBook?.cover_url ?? '/'}
             alt="Booku"
           />
         </div>

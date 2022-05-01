@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { CategoryType, BookType } from '@types';
+import { CategoryType, BookType } from '@/types';
 
 export interface BookState {
   selectedCategory: CategoryType | null;

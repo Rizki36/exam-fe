@@ -35,7 +35,7 @@ const DetailItem: FC<{
       <div className="flex relative justify-center mx-9">
         <ImageItem
           className="w-full sm:w-48 lg:w-full"
-          src={selectedBook?.coverUrl ?? '/'}
+          src={selectedBook?.cover_url ?? '/'}
         />
       </div>
       <div className="flex-1">

@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import Image from 'next/image';
 
 import Decoration2 from '@/components/LandingPage/TrandingSection/Decorations/Decoration2';
-import { Page } from '@types';
+import { Page } from '@/types';
 
 const profile: Page = () => {
   return (
