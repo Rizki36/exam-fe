@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import store from '@/configs/redux/store';
+import store, { persistor } from '@/configs/redux/store';
 import BaseTemplate from '@/templates/BaseTemplate';
 import { MyAppProps } from '@types';
 
@@ -12,9 +13,13 @@ const MyApp = ({ Component, pageProps }: MyAppProps) => {
   return (
     <>
       <Provider store={store}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        {/* @ts-ignore */}
+        <PersistGate loading={null} persistor={persistor}>
+          <Layout>
+            {/* @ts-ignore */}
+            <Component {...pageProps} />
+          </Layout>
+        </PersistGate>
       </Provider>
     </>
   );

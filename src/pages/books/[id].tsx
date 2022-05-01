@@ -9,7 +9,11 @@ import { StarIcon as StarIconSolid } from '@heroicons/react/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useAppSelector } from '@/configs/redux/hooks';
+
 const BookDetailsPage = () => {
+  const { selectedBook } = useAppSelector((state) => state.book);
+
   const [isFavorite, setFavorite] = useState(false);
 
   return (
@@ -28,29 +32,31 @@ const BookDetailsPage = () => {
             className="rounded-md"
             layout="fill"
             objectFit="contain"
-            src={
-              'https://cdn.sejutacita.id/6138d21e3a09ee0013ee730f/Booku/c55ef13f-eb0e-40de-a04c-e46df5940682.png'
-            }
+            src={selectedBook?.coverUrl ?? '/'}
             alt="Booku"
           />
         </div>
         <div className="flex gap-x-4 justify-center mt-3 text-base-100">
-          <small>📃 8 Chapters</small>
-          <small>⏰ 16 Min</small>
+          <small>📃 {selectedBook?.sections?.length ?? 0} Chapters</small>
+          <small>
+            ⏰{Math.round((selectedBook?.audio_length ?? 0) / 60)} Min
+          </small>
         </div>
 
         <div className="flex gap-x-3 justify-center px-4 mt-10">
           <button className="flex-1 btn">🎧 Listen</button>
-          <button className="flex-1 btn">🎧 Read</button>
+          <button className="flex-1 btn">📖 Read</button>
         </div>
       </div>
 
       <div className="col-span-4 p-1 py-3 mt-10 lg:col-span-3 lg:px-8 lg:mt-0 text-base-100">
         <div>
           <h1 className="text-xl font-bold text-center lg:text-left">
-            The Intelligent Investor
+            {selectedBook?.title}
           </h1>
-          <h4 className="text-lg text-center lg:text-left">Benjamin Graham</h4>
+          <h4 className="text-lg text-center lg:text-left">
+            {selectedBook?.description}
+          </h4>
         </div>
 
         <div className="my-5">
@@ -107,31 +113,17 @@ const BookDetailsPage = () => {
         <div className="my-8">
           <h1 className="mb-1 text-xl font-medium">What&apos;s inside ?</h1>
 
-          {[...Array(8)].map((i) => (
+          {selectedBook?.sections?.map((section) => (
             <div
-              key={i}
+              key={section.title}
               tabIndex={0}
               className="collapse collapse-arrow border-base-300 rounded-box"
             >
               <div className="text-xl font-medium collapse-title">
-                Section {i}
+                {section.title}
               </div>
               <div className="collapse-content">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quaerat quisquam, nesciunt vel soluta aspernatur officia
-                  debitis reprehenderit facilis harum dicta quis nam blanditiis
-                  eveniet numquam ratione vero, nisi officiis possimus at quam.
-                  Modi aspernatur sed quaerat illo nesciunt, enim minus vel
-                  saepe est odit, beatae quae atque? Odio omnis beatae tenetur
-                  adipisci illo explicabo! Consequuntur quisquam reiciendis eum
-                  praesentium laborum distinctio error dicta aut? At pariatur
-                  dolor quam dicta doloremque eveniet provident, itaque
-                  asperiores magnam omnis distinctio reprehenderit magni quidem
-                  totam molestiae, dolore libero, quo iste sint! Eos delectus,
-                  molestiae ipsum vel maxime quaerat facere doloremque sunt
-                  suscipit! Temporibus, eos!
-                </p>
+                <p>{section.content}</p>
               </div>
             </div>
           ))}

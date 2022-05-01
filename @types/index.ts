@@ -1,10 +1,10 @@
-import { ComponentType } from 'react';
+import { FC } from 'react';
 
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 
 export type Page<P = {}> = NextPage<P> & {
-  layout?: ComponentType;
+  layout?: FC;
 };
 
 export type MyAppProps = AppProps & {
