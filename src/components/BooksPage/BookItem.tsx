@@ -18,7 +18,7 @@ const BookItem: FC<{ books: BookType[] }> = ({ books }) => {
     <div className="grid flex-1 grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-3 lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4 xl:gap-x-8">
       {books.map((book) => (
         <label
-          key={book.id}
+          key={`${book.id}${book.category_id}`}
           className="relative cursor-pointer select-none text-base-100"
         >
           <input
