@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 
 import ImageItem from './ImageItem';
 
-const BookItem = () => {
-  const [book, setBook] = useState<number | null>(null);
-
+const BookItem: FC<{
+  book: number | null;
+  setBook: Dispatch<SetStateAction<number | null>>;
+}> = ({ book, setBook }) => {
   return (
     <>
       {[...Array(10)].map((_, i) => (

@@ -1,13 +1,20 @@
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 
 import Link from 'next/link';
 
 import ImageItem from './ImageItem';
 
-const DetailItem: FC<{ className?: string }> = ({ className }) => {
+const DetailItem: FC<{
+  className?: string;
+  book: number | null;
+  setBook: Dispatch<SetStateAction<number | null>>;
+}> = ({ className, book, setBook }) => {
+  console.log(book);
   return (
     <div
-      className={`flex flex-col p-3 px-6 w-96 bg-gradient-to-b bg-base-100 from-base-100 to-base-300 ${className}`}
+      className={`flex-col p-3 px-6 w-96 bg-gradient-to-b bg-base-100 from-base-100 to-base-300 ${
+        !book ? 'hidden' : 'flex absolute right-0 !w-full left-0'
+      } lg:flex ${className} `}
     >
       <h3 className="mt-4 text-xl text-center">About The Book</h3>
       <div className="my-4 divider">&apos;&apos;</div>
@@ -23,7 +30,7 @@ const DetailItem: FC<{ className?: string }> = ({ className }) => {
         <small className="block mb-5 text-center text-base-content/70">
           Benjamin Graham
         </small>
-        <p className="text-sm line-clamp-5 text-base-content/60">
+        <p className="text-sm line-clamp-3 md:line-clamp-5 text-base-content/60">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
           mollitia, Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Repellendus voluptatum vero explicabo ad dignissimos, corporis quos
@@ -53,9 +60,17 @@ const DetailItem: FC<{ className?: string }> = ({ className }) => {
         </p>
       </div>
 
-      <Link href={'/books/1'} passHref>
-        <a className="mb-10 w-full rounded-full btn btn-primary">Read</a>
-      </Link>
+      <div className="mb-10">
+        <Link href={'/books/1'} passHref>
+          <a className="mt-3 w-full rounded-full btn btn-primary">Read</a>
+        </Link>
+        <button
+          onClick={() => setBook(null)}
+          className="mt-3 w-full rounded-full lg:hidden btn btn-primary btn-outline"
+        >
+          Close
+        </button>
+      </div>
     </div>
   );
 };

@@ -11,6 +11,7 @@ import Container from '@/components/Container';
 import { Page } from '@types';
 
 const Books: Page = () => {
+  const [book, setBook] = useState<number | null>(null);
   const [categoryId, setCategoryId] = useState<number | null>(null);
 
   return (
@@ -26,8 +27,8 @@ const Books: Page = () => {
 
           {categoryId ? (
             <>
-              <div className="grid flex-1 grid-cols-2 gap-x-3 gap-y-10 lg:grid-cols-4 lg:gap-x-8">
-                <BookItem />
+              <div className="grid flex-1 grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-3 lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4 xl:gap-x-8">
+                <BookItem book={book} setBook={setBook} />
               </div>
               <div className="flex justify-center mt-16 w-full">
                 <PaginationItem />
@@ -38,7 +39,7 @@ const Books: Page = () => {
           )}
         </Container>
 
-        <DetailItem className="hidden lg:flex" />
+        <DetailItem book={book} setBook={setBook} />
       </div>
     </div>
   );
