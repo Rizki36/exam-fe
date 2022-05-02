@@ -1,7 +1,11 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+
+import { setPage } from '@/configs/redux/bookSlice';
+import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
 
 const PaginationItem: FC = () => {
-  const [page, setPage] = useState(1);
+  const { page } = useAppSelector((state) => state.book);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="flex justify-center mt-16 w-full">
@@ -9,14 +13,14 @@ const PaginationItem: FC = () => {
         <button
           onClick={() => {
             // prevent back
-            if (page > 1) setPage(page - 1);
+            if (page > 0) dispatch(setPage(page - 1));
           }}
           className="btn"
         >
           «
         </button>
-        <button className="btn">Page {page}</button>
-        <button onClick={() => setPage(page + 1)} className="btn">
+        <button className="btn">Page {page + 1}</button>
+        <button onClick={() => dispatch(setPage(page + 1))} className="btn">
           »
         </button>
       </div>

@@ -53,3 +53,14 @@ a {
 .tab-active{
   @apply !border-base-100;
 }
+
+.input-pill__container{
+  @apply relative text-sm cursor-pointer select-none carousel-item text-base-100;
+}
+.input-pill__container input{
+  @apply hidden;
+}
+.input-pill__item{
+  @apply py-2 px-3 rounded-full border peer-checked:bg-base-100 peer-checked:text-base-content;
+  
+}

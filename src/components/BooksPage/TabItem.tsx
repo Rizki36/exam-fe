@@ -1,18 +1,22 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { FC } from 'react';
+
+import { setActiveTab } from '@/configs/redux/bookSlice';
+import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
 
 export type TabEnum = 'books' | 'favorite';
 
 type TabItemType = {
   className?: string;
-  activeTab: TabEnum;
-  setActiveTab: Dispatch<SetStateAction<TabEnum>>;
 };
 
-const TabItem: FC<TabItemType> = ({ className, activeTab, setActiveTab }) => {
+const TabItem: FC<TabItemType> = ({ className }) => {
+  const dispatch = useAppDispatch();
+  const { activeTab } = useAppSelector((state) => state.book);
+
   return (
     <div className={`tabs ${className}`}>
       <a
-        onClick={() => setActiveTab('books')}
+        onClick={() => dispatch(setActiveTab('books'))}
         className={`text-base-100 tab-lg tab tab-bordered ${
           activeTab === 'books' && 'tab-active'
         }`}
@@ -20,7 +24,7 @@ const TabItem: FC<TabItemType> = ({ className, activeTab, setActiveTab }) => {
         Books
       </a>
       <a
-        onClick={() => setActiveTab('favorite')}
+        onClick={() => dispatch(setActiveTab('favorite'))}
         className={`text-base-100 tab-lg tab tab-bordered ${
           activeTab === 'favorite' && 'tab-active'
         }`}
