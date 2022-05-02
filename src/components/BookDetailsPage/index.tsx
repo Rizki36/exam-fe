@@ -1,7 +1,8 @@
 import { ChevronLeftIcon } from '@heroicons/react/outline';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import { useAppSelector } from '@/configs/redux/hooks';
+import { setSelectedBook } from '@/configs/redux/bookSlice';
+import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
 
 import FavoriteItem from '../FavoriteItem';
 import DescriptionItem from './DescriptionItem';
@@ -11,16 +12,22 @@ import SectionsNAudioItem from './SectionsNAudioItem';
 
 const BookDetailsPage = () => {
   const { selectedBook } = useAppSelector((state) => state.book);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  /** back to previous page and reset selected book  */
+  const handleBack = () => {
+    router.back();
+    dispatch(setSelectedBook(null));
+  };
 
   return (
     <div className="grid grid-cols-4 py-4 px-8 lg:gap-y-0 ">
       <div className="flex col-span-4 items-center mb-10 text-base-100">
-        <Link href={'/books'} passHref>
-          <a className="mr-3 btn btn-sm btn-ghost">
-            <ChevronLeftIcon className="w-4 h-4" />
-            <span className="ml-3 text-sm text-base-100">Back</span>
-          </a>
-        </Link>
+        <a onClick={handleBack} className="mr-3 btn btn-sm btn-ghost">
+          <ChevronLeftIcon className="w-4 h-4" />
+          <span className="ml-3 text-sm text-base-100">Back</span>
+        </a>
       </div>
       <div className="col-span-4 lg:col-span-1">
         <ImageItem />
