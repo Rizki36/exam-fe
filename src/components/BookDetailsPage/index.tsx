@@ -13,7 +13,7 @@ const BookDetailsPage = () => {
   const { selectedBook } = useAppSelector((state) => state.book);
 
   return (
-    <div className="grid grid-cols-4 py-6 px-8  lg:gap-y-0 ">
+    <div className="grid grid-cols-4 py-4 px-8 lg:gap-y-0 ">
       <div className="flex col-span-4 items-center mb-10 text-base-100">
         <Link href={'/books'} passHref>
           <a className="mr-3 btn btn-sm btn-ghost">

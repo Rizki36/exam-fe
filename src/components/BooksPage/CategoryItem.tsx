@@ -64,7 +64,7 @@ function Container(Children: FC) {
 
     render() {
       return (
-        <div className="text-base-100">
+        <div className="mx-3 text-base-100">
           <div className="mb-3 text-lg">Category</div>
           <div className="gap-x-2 items-center mb-10 carousel">
             <Children />
