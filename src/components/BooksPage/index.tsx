@@ -13,12 +13,13 @@ import SearchItem from './SearchItem';
 import TabItem, { TabEnum } from './TabItem';
 
 const BooksPage = () => {
-  const { selectedCategory, favorite: favoriteBooks } = useAppSelector(
-    (state) => state.book
-  );
+  const {
+    selectedCategory,
+    favorite: favoriteBooks,
+    page,
+  } = useAppSelector((state) => state.book);
 
-  const { books, isLoading } = useBooks(selectedCategory?.id);
-
+  const { books, isLoading } = useBooks(selectedCategory?.id, page);
   const [activeTab, setActiveTab] = useState<TabEnum>('books');
 
   return (
