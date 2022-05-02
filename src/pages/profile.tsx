@@ -1,10 +1,14 @@
 import { Fragment } from 'react';
 
+import { useRouter } from 'next/router';
+
 import { Page } from '@/types';
 
-const profile: Page = () => {
+const Profile: Page = () => {
+  const router = useRouter();
+
   return (
-    <div className="flex relative justify-center items-center w-screen h-screen bg-gradient-to-b from-base-100 to-base-300">
+    <div className="flex relative justify-center items-center w-screen min-h-screen bg-gradient-to-b from-base-100 to-base-300">
       <div className="flex items-center">
         <div>
           <h1 className="text-7xl font-bold">
@@ -58,10 +62,16 @@ const profile: Page = () => {
           </div>
         </div>
       </div>
+      <button
+        className="absolute bottom-24 btn btn-outline border-base-content text-base-content"
+        onClick={() => router.back()}
+      >
+        Back
+      </button>
     </div>
   );
 };
 
-profile.layout = Fragment;
+Profile.layout = Fragment;
 
-export default profile;
+export default Profile;
