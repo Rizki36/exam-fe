@@ -16,45 +16,50 @@ const BookItem: FC<{ books: BookType[] }> = ({ books }) => {
 
   if (!books.length) return <EmptyItem />;
 
+  const bookFiltered = books
+    /** category filter */
+    .filter((book) => {
+      /** include all when category not selected */
+      if (!selectedCategory) return true;
+      return book.category_id === selectedCategory?.id;
+    })
+    /** search filter */
+    .filter((book) => {
+      /** include all when search is empty */
+      if (search === '') return true;
+      return book.title.toLowerCase().includes(search.toLowerCase());
+    });
+
+  if (!bookFiltered.length) return <EmptyItem />;
+
   return (
-    <div className="grid flex-1 grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-3 lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4 xl:gap-x-8">
-      {books
-        /** category filter */
-        .filter((book) => {
-          /** include all when category not selected */
-          if (!selectedCategory) return true;
-          return book.category_id === selectedCategory?.id;
-        })
-        /** search filter */
-        .filter((book) => {
-          /** include all when search is empty */
-          if (search === '') return true;
-          return book.title.toLowerCase().includes(search.toLowerCase());
-        })
-        .map((book) => (
-          <label
-            key={`${book.id}${book.category_id}`}
-            className="relative cursor-pointer select-none text-base-100"
-          >
-            <input
-              type="radio"
-              name="book"
-              className="peer hidden"
-              checked={book.id === selectedBook?.id}
-              onClick={() => {
-                if (book.id === selectedBook?.id)
-                  dispatch(setSelectedBook(null));
-                else dispatch(setSelectedBook(book));
-              }}
-              onChange={() => {}}
-            />
-            <div className="py-3 px-4 rounded-lg transition-all peer-checked:bg-base-100/90 peer-checked:text-base-content">
-              <ImageItem src={book.cover_url ?? '/'} />
-              <h4 className="line-clamp-1">{book.title}</h4>
-              <p className="text-sm opacity-80">{book.authors.join(', ')}</p>
-            </div>
-          </label>
-        ))}
+    <div className="book-item__layout">
+      {bookFiltered.map((book) => (
+        <label
+          key={`${book.id}${book.category_id}`}
+          className="book-item__outer-container tooltip"
+          data-tip={`Title: ${book.title}, Authors: ${book.authors.join(', ')}`}
+        >
+          <input
+            type="radio"
+            name="book"
+            className="peer hidden"
+            checked={book.id === selectedBook?.id}
+            onClick={() => {
+              if (book.id === selectedBook?.id) dispatch(setSelectedBook(null));
+              else dispatch(setSelectedBook(book));
+            }}
+            onChange={() => {}}
+          />
+          <div className="book-item__inner-container">
+            <ImageItem src={book.cover_url ?? '/'} />
+            <h4 className="ml-3 line-clamp-1">{book.title}</h4>
+            <p className="ml-3 text-sm opacity-80 line-clamp-1">
+              {book.authors.join(', ')}
+            </p>
+          </div>
+        </label>
+      ))}
     </div>
   );
 };

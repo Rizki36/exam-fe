@@ -2,6 +2,7 @@ import { useAppSelector } from '@/configs/redux/hooks';
 import { useBooks } from '@/hooks/books';
 
 import BookItem from '../BookItem';
+import BookLoadingItem from '../BookLoadingItem';
 import NoCategorySelectedItem from '../NoCategorySelectedItem';
 import PaginationItem from '../PaginationItem';
 
@@ -14,7 +15,7 @@ const BookSection = () => {
       {selectedCategory ? (
         <>
           {isLoading ? (
-            <>Loading</>
+            <BookLoadingItem />
           ) : (
             <>
               <BookItem books={books ?? []} />
