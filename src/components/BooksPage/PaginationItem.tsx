@@ -13,7 +13,7 @@ const PaginationItem: FC = () => {
         <button
           onClick={() => {
             // prevent back
-            if (page > 1) dispatch(setPage(page - 1));
+            if (page > 0) dispatch(setPage(page - 1));
           }}
           className="btn"
         >

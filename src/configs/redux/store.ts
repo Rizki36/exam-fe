@@ -39,7 +39,7 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(
   {
-    key: 'booku1',
+    key: 'booku3',
     storage,
     whitelist: ['book'],
   },

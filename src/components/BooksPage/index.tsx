@@ -37,7 +37,8 @@ const BooksPage = () => {
 
           {activeTab === 'favorite' && <BookItem books={favoriteBooks ?? []} />}
 
-          {activeTab === 'books' && <CategoryItem />}
+          <CategoryItem />
+
           {activeTab === 'books' &&
             (selectedCategory ? (
               <>

@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CategoryType, BookType } from '@/types';
 
 export interface BookState {
+  search: string;
   page: number;
   selectedCategory: CategoryType | null;
   selectedBook: BookType | null;
@@ -10,6 +11,7 @@ export interface BookState {
 }
 
 const initialState: BookState = {
+  search: '',
   page: 0,
   selectedCategory: null,
   selectedBook: null,
@@ -25,6 +27,8 @@ export const bookSlice = createSlice({
     },
     setSelectedCategory(state, action: PayloadAction<CategoryType | null>) {
       state.selectedCategory = action.payload;
+      /** reset page */
+      state.page = 0;
     },
     toggleFavoriteBook(state, action: PayloadAction<BookType>) {
       const curIndex = state.favorite.findIndex(
@@ -37,6 +41,9 @@ export const bookSlice = createSlice({
     setPage(state, action: PayloadAction<number>) {
       state.page = action.payload;
     },
+    setSearch(state, action: PayloadAction<string>) {
+      state.search = action.payload;
+    },
   },
 });
 
@@ -45,6 +52,7 @@ export const {
   setSelectedCategory,
   toggleFavoriteBook,
   setPage,
+  setSearch,
 } = bookSlice.actions;
 
 export default bookSlice.reducer;
