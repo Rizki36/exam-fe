@@ -27,7 +27,12 @@ const BookItem: FC<{ books: BookType[] }> = ({ books }) => {
     .filter((book) => {
       /** include all when search is empty */
       if (search === '') return true;
-      return book.title.toLowerCase().includes(search.toLowerCase());
+      return (
+        book.title.toLowerCase().includes(search.toLowerCase()) ||
+        book.authors.some((author) =>
+          author.toLowerCase().includes(search.toLowerCase())
+        )
+      );
     });
 
   if (!bookFiltered.length) return <EmptyItem />;

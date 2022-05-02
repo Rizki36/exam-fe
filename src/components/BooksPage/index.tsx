@@ -1,4 +1,9 @@
-import { useAppSelector } from '@/configs/redux/hooks';
+import { useEffect } from 'react';
+
+import { useRouter } from 'next/router';
+
+import { setActiveTab, setSearch } from '@/configs/redux/bookSlice';
+import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
 
 import Container from '../Container';
 import CategoryItem from './CategoryItem';
@@ -9,6 +14,17 @@ import FavoriteSection from './Sections/FavoriteSection';
 import TabItem from './TabItem';
 
 const BooksPage = () => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    const search = router.query.search as string;
+    const section = router.query.section as string;
+
+    if (search) dispatch(setSearch(search));
+    if (section === 'favorite') dispatch(setActiveTab('favorite'));
+  }, [dispatch, router.query]);
+
   const { activeTab } = useAppSelector((state) => state.book);
 
   return (

@@ -1,5 +1,7 @@
 import { FC, useState } from 'react';
 
+import Link from 'next/link';
+
 import ButtonModal from './ButtonModal';
 import ModalMenu from './ModalMenu';
 
@@ -11,7 +13,11 @@ const Navbar: FC<{ className: string }> = ({ className }) => {
       <div
         className={`flex relative justify-between items-center py-3 px-5 bg-base-100 ${className}`}
       >
-        <h1 className={`text-3xl font-bold tracking-wider text-left`}>Booku</h1>
+        <Link href={'/'} passHref>
+          <h1 className={`text-3xl font-bold tracking-wider text-left`}>
+            Booku
+          </h1>
+        </Link>
 
         <ButtonModal isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
