@@ -2,7 +2,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { CategoryType, BookType } from '@/types';
 
+import type { TabEnum } from '../../components/BooksPage/TabItem';
+
 export interface BookState {
+  activeTab: TabEnum;
   search: string;
   page: number;
   selectedCategory: CategoryType | null;
@@ -11,6 +14,7 @@ export interface BookState {
 }
 
 const initialState: BookState = {
+  activeTab: 'books',
   search: '',
   page: 0,
   selectedCategory: null,
@@ -44,6 +48,10 @@ export const bookSlice = createSlice({
     setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload;
     },
+    setActiveTab(state, action: PayloadAction<TabEnum>) {
+      state.activeTab = action.payload;
+      state.selectedCategory = null;
+    },
   },
 });
 
@@ -53,6 +61,7 @@ export const {
   toggleFavoriteBook,
   setPage,
   setSearch,
+  setActiveTab,
 } = bookSlice.actions;
 
 export default bookSlice.reducer;

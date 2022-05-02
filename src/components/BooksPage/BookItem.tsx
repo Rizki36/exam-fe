@@ -20,9 +20,14 @@ const BookItem: FC<{ books: BookType[] }> = ({ books }) => {
     <div className="grid flex-1 grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-3 lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4 xl:gap-x-8">
       {books
         /** category filter */
-        .filter((book) => book.category_id === selectedCategory?.id)
+        .filter((book) => {
+          /** include all when category not selected */
+          if (!selectedCategory) return true;
+          return book.category_id === selectedCategory?.id;
+        })
         /** search filter */
         .filter((book) => {
+          /** include all when search is empty */
           if (search === '') return true;
           return book.title.toLowerCase().includes(search.toLowerCase());
         })
