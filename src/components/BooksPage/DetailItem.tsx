@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { setSelectedBook } from '@/configs/redux/bookSlice';
 import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
 
-import FavoriteItem from './FavoriteItem';
+import SectionsNAudioItem from '../BookDetailsPage/SectionsNAudioItem';
+import FavoriteItem from '../FavoriteItem';
 import ImageItem from './ImageItem';
 
 const DetailItem: FC<{
@@ -39,12 +40,8 @@ const DetailItem: FC<{
         />
       </div>
       <div className="flex-1">
-        <div className="flex gap-x-4 justify-center mt-3">
-          <small>📃 {selectedBook?.sections?.length ?? 0} Chapters</small>
-          <small>
-            ⏰{Math.round((selectedBook?.audio_length ?? 0) / 60)} Min
-          </small>
-        </div>
+        <SectionsNAudioItem />
+
         <FavoriteItem className="my-3 text-base-content" />
 
         <p className="text-sm line-clamp-3 md:line-clamp-5 text-base-content/60">
