@@ -61,6 +61,17 @@ a {
   @apply hidden;
 }
 .input-pill__item{
-  @apply py-2 px-3 rounded-full border peer-checked:bg-base-100 peer-checked:text-base-content;
-  
+  @apply py-2 px-3 rounded-full border peer-checked:bg-base-100 peer-checked:text-base-content; 
+}
+
+.book-item__layout{
+  @apply grid flex-1 grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-3 lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4 xl:gap-x-8;
+}
+
+.book-item__outer-container{
+  @apply relative cursor-pointer select-none text-base-100;
+}
+
+.book-item__inner-container{
+  @apply py-3 px-4 rounded-lg transition-all peer-checked:bg-base-100/90 peer-checked:text-base-content text-left;
 }
