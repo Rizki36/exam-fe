@@ -1,4 +1,4 @@
-const BookItemLoading = () => {
+const BookLoadingItem = () => {
   return (
     <div className="book-item__layout">
       {[...Array(20)].map((_, index) => (
@@ -14,4 +14,4 @@ const BookItemLoading = () => {
   );
 };
 
-export default BookItemLoading;
+export default BookLoadingItem;
