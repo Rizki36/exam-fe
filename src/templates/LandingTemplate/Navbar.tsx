@@ -15,7 +15,7 @@ const Navbar: FC<{ className?: string }> = ({ className }) => {
           </Link>
         </div>
         <div className="flex-none">
-          <Link href={'/books/favorites'} passHref>
+          <Link href={'/books?section=favorite'} passHref>
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator">
                 <svg
