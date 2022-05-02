@@ -8,7 +8,7 @@ Simple app for frontend test
 ## Tech Stack
 - Next js
 - Typescript
-- Redux Toolkit
+- Redux Toolkit (w persist)
 - SWR
 - Framer Motion
 - Tailwind CSS
