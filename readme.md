@@ -12,6 +12,7 @@ Simple app for frontend test
 - SWR
 - Framer Motion
 - Tailwind Css
+- Axios
 
 ## Screenshots
 <table>
