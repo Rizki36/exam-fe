@@ -3,7 +3,11 @@ import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
-import { setActiveTab, setSearch } from '@/configs/redux/bookSlice';
+import {
+  setActiveTab,
+  setSearch,
+  setSelectedBook,
+} from '@/configs/redux/bookSlice';
 import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
 
 import Container from '../Container';
@@ -24,6 +28,9 @@ const BooksPage = () => {
 
     if (search) dispatch(setSearch(search));
     if (section === 'favorite') dispatch(setActiveTab('favorite'));
+
+    // unselect book when first load
+    dispatch(setSelectedBook(null));
   }, [dispatch, router.query]);
 
   const { activeTab } = useAppSelector((state) => state.book);
