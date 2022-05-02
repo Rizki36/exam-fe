@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Container from '@/components/Container';
 import dummy from '@/configs/dummy';
 
@@ -9,6 +11,8 @@ import QuoteItem from './QuoteItem';
 import SearchItem from './SearchItem';
 
 const TrandingSection = () => {
+  const [selected, setSelected] = useState(-1);
+
   return (
     <Container className="min-h-screen backdrop-blur snap-y snap-mandatory bg-base-100">
       <div className="grid relative grid-cols-1 items-center py-20 min-h-fit snap-center lg:grid-cols-3 lg:p-0 lg:h-screen">
@@ -27,7 +31,12 @@ const TrandingSection = () => {
         </div>
         <div className="relative order-1 col-span-2 mt-24 mb-12 lg:order-1 lg:justify-start lg:mt-0 carousel carousel-center">
           {dummy.map((item) => (
-            <ImageItem key={item.id} {...item} />
+            <ImageItem
+              key={item.id}
+              selected={selected}
+              setSelected={setSelected}
+              {...item}
+            />
           ))}
         </div>
         <Decoration1 />

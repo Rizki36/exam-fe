@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { AnimatePresence, motion } from 'framer-motion';
+
 import { setSelectedBook } from '@/configs/redux/bookSlice';
 import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
 import { BookType } from '@/types';
@@ -38,34 +40,47 @@ const BookItem: FC<{ books: BookType[] }> = ({ books }) => {
   if (!bookFiltered.length) return <EmptyItem />;
 
   return (
-    <div className="book-item__layout">
-      {bookFiltered.map((book) => (
-        <label
-          key={`${book.id}${book.category_id}`}
-          className="book-item__outer-container tooltip"
-          data-tip={`Title: ${book.title}, Authors: ${book.authors.join(', ')}`}
-        >
-          <input
-            type="radio"
-            name="book"
-            className="peer hidden"
-            checked={book.id === selectedBook?.id}
-            onClick={() => {
-              if (book.id === selectedBook?.id) dispatch(setSelectedBook(null));
-              else dispatch(setSelectedBook(book));
-            }}
-            onChange={() => {}}
-          />
-          <div className="book-item__inner-container">
-            <ImageItem src={book.cover_url ?? '/'} />
-            <h4 className="ml-3 line-clamp-1">{book.title}</h4>
-            <p className="ml-3 text-sm opacity-80 line-clamp-1">
-              {book.authors.join(', ')}
-            </p>
-          </div>
-        </label>
-      ))}
-    </div>
+    <AnimatePresence exitBeforeEnter>
+      <motion.div
+        key={selectedCategory?.id ? selectedCategory.id : 'null'}
+        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.15 }}
+      >
+        <div className="book-item__layout">
+          {bookFiltered.map((book) => (
+            <label
+              key={`${book.id}${book.category_id}`}
+              className="book-item__outer-container tooltip"
+              data-tip={`Title: ${book.title}, Authors: ${book.authors.join(
+                ', '
+              )}`}
+            >
+              <input
+                type="radio"
+                name="book"
+                className="peer hidden"
+                checked={book.id === selectedBook?.id}
+                onClick={() => {
+                  if (book.id === selectedBook?.id)
+                    dispatch(setSelectedBook(null));
+                  else dispatch(setSelectedBook(book));
+                }}
+                onChange={() => {}}
+              />
+              <div className="book-item__inner-container">
+                <ImageItem src={book.cover_url ?? '/'} />
+                <h4 className="ml-3 line-clamp-1">{book.title}</h4>
+                <p className="ml-3 text-sm opacity-80 line-clamp-1">
+                  {book.authors.join(', ')}
+                </p>
+              </div>
+            </label>
+          ))}
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
