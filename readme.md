@@ -11,7 +11,8 @@ Simple app for frontend test
 - Redux Toolkit
 - SWR
 - Framer Motion
-- Tailwind Css
+- Tailwind CSS
+- Daisy UI
 - Axios
 
 ## Screenshots
