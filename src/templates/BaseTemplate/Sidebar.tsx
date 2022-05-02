@@ -12,12 +12,9 @@ const Sidebar: FC<{ className?: string }> = ({ className }) => {
       className={`flex flex-col bg-gradient-to-b from-base-100 to-base-300 bg-base-100 py-5 px-5 ${className}`}
     >
       <Link href={'/'} passHref>
-        <h1
-          role={'link'}
-          className="text-4xl font-bold tracking-wider text-left"
-        >
+        <a className="w-fit text-4xl font-bold tracking-wider text-left text-base-content btn btn-ghost">
           Booku
-        </h1>
+        </a>
       </Link>
       <div className=" mt-5 w-56 h-full">
         <Menus />
