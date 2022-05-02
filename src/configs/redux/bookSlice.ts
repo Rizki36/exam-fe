@@ -51,6 +51,7 @@ export const bookSlice = createSlice({
     setActiveTab(state, action: PayloadAction<TabEnum>) {
       state.activeTab = action.payload;
       state.selectedCategory = null;
+      state.selectedBook = null;
     },
   },
 });

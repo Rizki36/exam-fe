@@ -1,4 +1,16 @@
+import { useState, useEffect } from 'react';
+
 const BookLoadingItem = () => {
+  const [isAppear, setAppear] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAppear(true);
+    }, 500);
+  }, []);
+
+  if (!isAppear) return null;
+
   return (
     <div className="book-item__layout">
       {[...Array(20)].map((_, index) => (

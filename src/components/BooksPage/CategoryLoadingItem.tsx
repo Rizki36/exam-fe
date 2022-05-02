@@ -1,4 +1,16 @@
+import { useState, useEffect } from 'react';
+
 const CategoryLoadingItem = () => {
+  const [isAppear, setAppear] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAppear(true);
+    }, 500);
+  }, []);
+
+  if (!isAppear) return null;
+
   return (
     <>
       {[...Array(20)].map((_, i) => (

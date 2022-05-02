@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import { setActiveTab, setSearch } from '@/configs/redux/bookSlice';
@@ -38,9 +39,19 @@ const BooksPage = () => {
 
           <CategoryItem />
 
-          {/* pagination only appears in the book tab */}
-          {activeTab === 'favorite' && <FavoriteSection />}
-          {activeTab === 'books' && <BookSection />}
+          <AnimatePresence exitBeforeEnter>
+            <motion.div
+              key={activeTab}
+              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.15 }}
+            >
+              {/* pagination only appears in the book tab */}
+              {activeTab === 'favorite' && <FavoriteSection />}
+              {activeTab === 'books' && <BookSection />}
+            </motion.div>
+          </AnimatePresence>
         </Container>
 
         <DetailItem />
