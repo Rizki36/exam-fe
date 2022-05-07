@@ -2,6 +2,7 @@ import { Component, FC } from 'react';
 
 import { setSelectedCategory } from '@/configs/redux/bookSlice';
 import { useAppDispatch, useAppSelector } from '@/configs/redux/hooks';
+import { mapCategoryIdToIcon } from '@/helpers/categoryHelper';
 import { useCategories } from '@/hooks/categories';
 
 import CategoryLoadingItem from './CategoryLoadingItem';
@@ -51,7 +52,9 @@ const CategoryItem: FC = () => {
               checked={selectedCategory?.id === id}
               onChange={() => handleChange(id, name)}
             />
-            <div className="input-pill__item">🎧 {name}</div>
+            <div className="input-pill__item">
+              {mapCategoryIdToIcon(id)} {name}
+            </div>
           </label>
         ))}
     </>
