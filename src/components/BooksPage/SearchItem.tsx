@@ -10,6 +10,7 @@ const SearchItem: FC<{ className?: string }> = ({ className }) => {
   return (
     <div className={`input-group ${className}`}>
       <input
+        id="search-book-item"
         type="text"
         placeholder="Search for books"
         value={search}

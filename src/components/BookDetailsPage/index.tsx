@@ -52,7 +52,10 @@ const BookDetailsPage = () => {
           </div>
 
           <div className="col-span-4 p-1 py-3 mt-10 lg:col-span-3 lg:px-8 lg:mt-0 text-base-100">
-            <h1 className="mb-8 text-xl font-bold text-center lg:text-left">
+            <h1
+              id="book-title"
+              className="mb-8 text-xl font-bold text-center lg:text-left"
+            >
               {selectedBook?.title}
             </h1>
 

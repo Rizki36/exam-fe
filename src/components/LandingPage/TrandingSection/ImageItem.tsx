@@ -17,7 +17,7 @@ const ImageItem: FC<
     <button
       title="Double click to view book"
       tabIndex={0}
-      className={`aspect-[2/3] overflow-hidden relative mx-3 h-32 rounded-lg hover:shadow-2xl transition scale-90 hover:scale-95 cursor-pointer lg:h-96 
+      className={`book-item aspect-[2/3] overflow-hidden relative mx-3 h-32 rounded-lg hover:shadow-2xl transition scale-90 hover:scale-95 cursor-pointer lg:h-96 
       tooltip carousel-item ${
         book.id === selected &&
         'scale-95 outline outline-base-content outline-4'

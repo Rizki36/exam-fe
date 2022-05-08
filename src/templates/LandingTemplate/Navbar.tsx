@@ -11,12 +11,18 @@ const Navbar: FC<{ className?: string }> = ({ className }) => {
       <div className="navbar">
         <div className="flex-1">
           <Link href={'/'}>
-            <a className="text-4xl normal-case btn btn-ghost">Booku</a>
+            <a id="title-button" className="text-4xl normal-case btn btn-ghost">
+              Booku
+            </a>
           </Link>
         </div>
         <div className="flex-none">
           <Link href={'/books?section=favorite'} passHref>
-            <label tabIndex={0} className="btn btn-ghost btn-circle">
+            <label
+              id="favorite-button"
+              tabIndex={0}
+              className="btn btn-ghost btn-circle"
+            >
               <div className="indicator">
                 <svg
                   className="w-6 h-6"
@@ -36,7 +42,11 @@ const Navbar: FC<{ className?: string }> = ({ className }) => {
             </label>
           </Link>
           <Link href={'/profile'} passHref>
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <label
+              id="profile-button"
+              tabIndex={0}
+              className="btn btn-ghost btn-circle avatar"
+            >
               <div className="relative w-10 rounded-full">
                 <Image
                   src={'/me.png'}
