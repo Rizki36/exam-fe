@@ -24,7 +24,7 @@ describe('Landing page', () => {
         // enter search
         cy.get('#search-submit-button').click();
         // search input should be equal to the search value
-        cy.get('#search-book-item').should('have.value', val);
+        cy.get('#search-book-input').should('have.value', val);
         // page url should be include the search value
         cy.url().should('include', '/books?search=Harry+Potter');
       });
