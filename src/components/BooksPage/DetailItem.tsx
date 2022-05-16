@@ -56,6 +56,7 @@ const DetailItem: FC<{
           </a>
         </Link>
         <button
+          id="close-button"
           onClick={() => dispatch(setSelectedBook(null))}
           className="mt-3 w-full rounded-full md:w-60 lg:hidden btn btn-primary btn-outline"
         >

@@ -52,7 +52,7 @@ const BookItem: FC<{ books: BookType[] }> = ({ books }) => {
           {bookFiltered.map((book) => (
             <label
               key={`${book.id}${book.category_id}`}
-              className="book-item__outer-container tooltip"
+              className="book-item book-item__outer-container tooltip"
               data-tip={`Title: ${book.title}, Authors: ${book.authors.join(
                 ', '
               )}`}
@@ -71,8 +71,8 @@ const BookItem: FC<{ books: BookType[] }> = ({ books }) => {
               />
               <div className="book-item__inner-container">
                 <ImageItem src={book.cover_url ?? '/'} />
-                <h4 className="ml-3 line-clamp-1">{book.title}</h4>
-                <p className="ml-3 text-sm opacity-80 line-clamp-1">
+                <h4 className="ml-3 line-clamp-1 book-title">{book.title}</h4>
+                <p className="ml-3 text-sm opacity-80 line-clamp-1 book-description">
                   {book.authors.join(', ')}
                 </p>
               </div>

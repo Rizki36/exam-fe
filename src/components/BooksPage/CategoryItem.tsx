@@ -44,7 +44,7 @@ const CategoryItem: FC = () => {
 
       {categories &&
         categories.map(({ id, name }) => (
-          <label key={id} className="input-pill__container">
+          <label key={id} className="category-option input-pill__container">
             <input
               type="radio"
               name="category"

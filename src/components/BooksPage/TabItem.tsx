@@ -16,6 +16,7 @@ const TabItem: FC<TabItemType> = ({ className }) => {
   return (
     <div className={`tabs ${className}`}>
       <a
+        id="books-tab"
         onClick={() => dispatch(setActiveTab('books'))}
         className={`text-base-100 tab-lg tab tab-bordered ${
           activeTab === 'books' && 'tab-active'
@@ -24,6 +25,7 @@ const TabItem: FC<TabItemType> = ({ className }) => {
         Books
       </a>
       <a
+        id="favorite-tab"
         onClick={() => dispatch(setActiveTab('favorite'))}
         className={`text-base-100 tab-lg tab tab-bordered ${
           activeTab === 'favorite' && 'tab-active'
