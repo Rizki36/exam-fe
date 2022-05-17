@@ -28,9 +28,9 @@ describe('book page', () => {
     // find first book
     cy.get('.book-item')
       .first()
-      .then(async ($book) => {
+      .then(($book) => {
         // find title element of first book
-        const $title = await $book.find('.book-title');
+        const $title = $book.find('.book-title');
 
         // get title text
         const title = $title.text();
@@ -58,9 +58,9 @@ describe('book page', () => {
     // find first book
     cy.get('.book-item')
       .first()
-      .then(async ($book) => {
+      .then(($book) => {
         // find title element
-        const $title = await $book.find('.book-title');
+        const $title = $book.find('.book-title');
 
         // get title text
         const title = $title.text();
