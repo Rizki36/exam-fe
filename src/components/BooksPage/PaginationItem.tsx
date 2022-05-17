@@ -20,7 +20,11 @@ const PaginationItem: FC = () => {
           «
         </button>
         <button className="btn">Page {page + 1}</button>
-        <button onClick={() => dispatch(setPage(page + 1))} className="btn">
+        <button
+          id="next-pagination-button"
+          onClick={() => dispatch(setPage(page + 1))}
+          className="btn"
+        >
           »
         </button>
       </div>

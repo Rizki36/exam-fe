@@ -3,8 +3,11 @@ import Link from 'next/link';
 const ButtonViewMore = () => {
   return (
     <Link href={'/books'} passHref>
-      <button className="self-center mt-8 w-fit btn btn-outline">
-        View More Book &nbsp;
+      <button
+        id="view-more-button"
+        className="flex gap-x-2 self-center mt-8 w-fit btn btn-outline"
+      >
+        View More Book
         <svg
           className="w-6 h-6"
           fill="none"

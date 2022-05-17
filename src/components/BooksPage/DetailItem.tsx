@@ -51,11 +51,15 @@ const DetailItem: FC<{
 
       <div className="flex flex-col gap-x-4 justify-center mb-10 md:flex-row">
         <Link href={`/books/${selectedBook?.id}`} passHref>
-          <a className="mt-3 w-full rounded-full md:w-60 lg:w-full btn btn-primary">
+          <a
+            id="read-button"
+            className="mt-3 w-full rounded-full md:w-60 lg:w-full btn btn-primary"
+          >
             Read
           </a>
         </Link>
         <button
+          id="close-button"
           onClick={() => dispatch(setSelectedBook(null))}
           className="mt-3 w-full rounded-full md:w-60 lg:hidden btn btn-primary btn-outline"
         >

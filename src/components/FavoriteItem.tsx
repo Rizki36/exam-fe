@@ -27,6 +27,7 @@ const FavoriteItem: FC<{ className?: string }> = ({ className }) => {
       </button>
 
       <button
+        id="favorite-button"
         className="btn btn-ghost"
         onClick={() =>
           selectedBook && dispatch(toggleFavoriteBook(selectedBook))

@@ -2,12 +2,17 @@ const SearchItem = () => {
   return (
     <form action="/books" className="w-full input-group">
       <input
+        id="search-book-input"
         name="search"
         type="text"
         placeholder="Search…"
         className="w-full input input-bordered"
       />
-      <button className="btn btn-square" type="submit">
+      <button
+        id="search-submit-button"
+        className="btn btn-square"
+        type="submit"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-6 h-6"

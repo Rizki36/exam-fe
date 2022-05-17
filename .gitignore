@@ -33,3 +33,6 @@ local
 
 # vercel
 .vercel
+
+
+/cypress/integration/examples

@@ -32,7 +32,11 @@ const BookDetailsPage = () => {
       >
         <div className="grid grid-cols-4 py-4 px-8 lg:gap-y-0 ">
           <div className="flex col-span-4 items-center mb-10 text-base-100">
-            <a onClick={handleBack} className="mr-3 btn btn-sm btn-ghost">
+            <a
+              id="back-button"
+              onClick={handleBack}
+              className="mr-3 btn btn-sm btn-ghost"
+            >
               <ChevronLeftIcon className="w-4 h-4" />
               <span className="ml-3 text-sm text-base-100">Back</span>
             </a>
@@ -52,7 +56,10 @@ const BookDetailsPage = () => {
           </div>
 
           <div className="col-span-4 p-1 py-3 mt-10 lg:col-span-3 lg:px-8 lg:mt-0 text-base-100">
-            <h1 className="mb-8 text-xl font-bold text-center lg:text-left">
+            <h1
+              id="book-title"
+              className="mb-8 text-xl font-bold text-center lg:text-left"
+            >
               {selectedBook?.title}
             </h1>
 
